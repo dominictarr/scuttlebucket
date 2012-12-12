@@ -1,4 +1,4 @@
-var tape = require('tape')('test', function (t) {
+var tape = require('tape')('test', function (assert) {
 var Model = require('scuttlebutt/model')
 var Events = require('scuttlebutt/events')
 
@@ -24,8 +24,11 @@ A.get('model').set('key', r)
 as.resume()
 bs.resume()
 
-t.deepEqual(B.get('event').history(), A.get('event').history())
-t.deepEqual(B.get('model').history(), A.get('model').history())
+console.log(B.get('event'))
+console.log(B.get('model'))
 
-t.end()
+assert.deepEqual(B.get('event').history(), A.get('event').history())
+assert.deepEqual(B.get('model').history(), A.get('model').history())
+
+assert.end()
 })
