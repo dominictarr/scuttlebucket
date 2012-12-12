@@ -2,11 +2,11 @@
 
 Nested scuttlebutts
 
-[![server-tests](https:travis-ci.org/dominictarr/scuttlebucket)
+[![server-tests](https://travis-ci.org/dominictarr/scuttlebucket)
 ](https://secure.travis-ci.org/dominictarr/scuttlebucket.png?branch=master)
 
-[![browser-support](https:ci.testling.com/dominictarr/scuttlebucket.png)
-](https:ci.testling.com/dominictarr/scuttlebucket)
+[![browser-support](https://ci.testling.com/dominictarr/scuttlebucket.png)
+](https://ci.testling.com/dominictarr/scuttlebucket)
 
 ## Example
 
