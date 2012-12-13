@@ -27,6 +27,10 @@ S.add = function (name, obj) {
   obj.on('_update', function (update) {
     self.emit('_update', self._wrap(name, update))
   })
+  //all sub components are from the same machine and will share the same timestamps.
+  //that is, the timestamps should be strictly monotonically increasing.
+  obj.id = this.id
+
   return this
 }
 
