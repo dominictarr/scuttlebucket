@@ -32,11 +32,18 @@ A.get('model').set('key', r)
 as.resume()
 bs.resume()
 
-console.log(B.get('event'))
-console.log(B.get('model'))
-
 t.deepEqual(B.get('event').history(), A.get('event').history())
 t.deepEqual(B.get('model').history(), A.get('model').history())
 
-t.end()
+var C = create('CCC')
+
+var cs = C.createStream()
+cs.pipe(A.createStream()).pipe(cs)
+
+process.nextTick(function () {
+
+  t.deepEqual(A.get('event').history(), A.get('event').history())
+  t.end()
+
+})
 })
