@@ -16,6 +16,21 @@ function Scuttlebucket (id) {
 
 var S = Scuttlebucket.prototype
 
+function setId(obj, id) {
+  if('function' === typeof obj.setId)
+    obj.setId(id)
+  else
+    obj.id = id
+  return obj
+}
+
+S.setId = function (id) {
+  this.id = id
+  for (var name in this.parts)
+    setId(this.parts[name], id)
+  return this
+}
+
 S.get = function (name) {
   return this.parts[name]
 }
@@ -29,7 +44,7 @@ S.add = function (name, obj) {
   })
   //all sub components are from the same machine and will share the same timestamps.
   //that is, the timestamps should be strictly monotonically increasing.
-  obj.id = this.id
+  setId(obj, this.id)
 
   return this
 }
