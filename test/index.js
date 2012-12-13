@@ -1,17 +1,25 @@
-var tape = require('tape')('test', function (assert) {
+var tape = require('tape')('test', function (t) {
 var Model = require('scuttlebutt/model')
 var Events = require('scuttlebutt/events')
 
 var Scuttlebucket = require('..')
 
-function create () {
-  return  new Scuttlebucket()
+function create (id) {
+  return  new Scuttlebucket(id)
     .add('event',new Events())
     .add('model',new Model())
 }
 
-var A = create()
-var B = create()
+var A = create('AAA')
+var B = create('BBB')
+
+t.equal(A.id, 'AAA')
+t.equal(B.id, 'BBB')
+t.equal(A.get('event').id, A.id)
+t.equal(B.get('event').id, B.id)
+t.equal(A.get('model').id, A.id)
+t.equal(B.get('model').id, B.id)
+
 
 var as = A.createStream()
 var bs = B.createStream()
@@ -27,8 +35,8 @@ bs.resume()
 console.log(B.get('event'))
 console.log(B.get('model'))
 
-assert.deepEqual(B.get('event').history(), A.get('event').history())
-assert.deepEqual(B.get('model').history(), A.get('model').history())
+t.deepEqual(B.get('event').history(), A.get('event').history())
+t.deepEqual(B.get('model').history(), A.get('model').history())
 
-assert.end()
+t.end()
 })
