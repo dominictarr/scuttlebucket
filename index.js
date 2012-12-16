@@ -58,11 +58,16 @@ S._wrap = function (name, update) {
 
 S.applyUpdate = function (update) {
   update = update.slice()
-  var value = update.shift()
+  var value = update.shift().slice()
+  if(value.length != 2) {
+    console.log('INVALID', update)
+    return false
+  }
   var name = value.shift()
   value = value.shift()
   update.unshift(value)
-  this.parts[name].applyUpdate(update)
+  this.parts[name]._update(update)
+  return true
 }
 
 S.history = function (sources) {
