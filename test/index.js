@@ -43,6 +43,9 @@ cs.pipe(A.createStream()).pipe(cs)
 process.nextTick(function () {
 
   t.deepEqual(A.get('event').history(), A.get('event').history())
+
+  t.deepEqual(A.toJSON(), {event: undefined, model: {key: r}})
+
   t.end()
 
 })
