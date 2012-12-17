@@ -86,8 +86,8 @@ S.history = function (sources) {
 //this is mostly useful for debugging
 S.toJSON = function () {
   var j = {}
-  for (var key in parts) {
-    j[key] = parts[key].toJSON ? parts[key].toJSON() : undefined
+  for (var key in this.parts) {
+    j[key] = this.parts[key].toJSON ? this.parts[key].toJSON() : undefined
   }
   return j
 }
