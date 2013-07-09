@@ -7,7 +7,7 @@
     "url": "git://github.com/dominictarr/scuttlebucket.git"
   },
   "dependencies": {
-    "scuttlebutt": "~5.2"
+    "scuttlebutt": ">=5.2 <6"
   },
   "devDependencies": {
     "tape": "~0.1.0"
